@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+   <title>drawing</title>
+   <script type="text/javascript">
+   
+     </script> 
+   </head> 
+<body bgcolor="Black">
+  <canvas id="canvasId" width="1200px" height="645px"></canvas>
+  
+  <script type="text/javascript">
+      var canvas = document.getElementById('canvasId');
+      var context = canvas.getContext('2d');
+  
+      //draw the background
+      context.beginPath();
+      context.rect(50,50,canvas.width,canvas.height);
+      var gradient = context.createLinearGradient(0,0,0,canvas.height);
+      gradient.addColorStop(1, "hotPink");
+      gradient.addColorStop(0.2, "slateGray"); 
+      context.fillStyle = gradient;
+      context.fill();
+      context.stroke();
+  
+      var imageObj = new Image();
+
+        imageObj.onload = function() 
+      {
+        
+        context.drawImage(imageObj, 200, 395);
+      
+      };
+      
+      imageObj.src = 'stick_figure_rock_guitar_400_clr-231x300.png';
+    
+      //draw text
+      context.beginPath();
+      context.font = "30pt Rockwell";
+      context.fillStyle = "Black"
+      context.fillText('Dark side              of the Moon!', 270, 135);
+      context.fill(); 
+      context.stroke();
+      
+      //draw mohawk
+      context.beginPath();
+      context.moveTo(400, 790);
+      context.quadraticCurveTo(180, 320, 380, 410);
+      context.lineWidth = 40;
+      context.strokeStyle = "Black";
+      context.stroke();
+
+     
+      //draw a sidewalk 
+      var canvasBottom = canvas.height;
+      var sidewalkHeight = 370;
+      var sidewalkTop = (canvasBottom - sidewalkHeight);
+      var initialY = (canvasBottom - sidewalkHeight);
+  
+      context.globalAlpha = 0.8;
+      context.beginPath();
+      context.rect(51,sidewalkTop,canvas.width,sidewalkHeight);
+      var gradient = context.createLinearGradient(0,0,0,canvas.height);
+      gradient.addColorStop(0.2, "Pink");
+      gradient.addColorStop(1, "Blue"); 
+      context.fillStyle = gradient;
+      context.fill();
+  
+      //draw door
+      context.beginPath();
+      context.rect(1079, 80, 100, 185);
+      context.shadowColor = "white";
+      context.shadowBlur = 18;
+      context.shadowOffsetX = 02;
+      context.shadowOffsetY = 03;
+      context.fillStyle = "Navy";
+      context.fill();
+      context.lineWidth = 35;
+      context.strokeStyle = "Black";
+      context.stroke();
+      
+      //draw doorknob
+      context.beginPath();
+      context.arc(1155, 170, 07, 0, 2 * Math.PI, false);
+      context.fillStyle = "Black";
+      context.fill();
+    
+      //draw moon
+      context.beginPath();
+      context.arc(520, 120, 52, 0, 2 * Math.PI, false);
+      context.fillStyle = "offWhite";
+      context.fill()
+      context.lineWidth = 15;
+      context.strokeStyle = "Gray";
+      context.stroke();
+    
+  
+     //draw tunnel 
+ 
+      function drawCircle(centerX,centerY,radius)
+     {
+     
+      context.beginPath();
+      context.arc(centerX,centerY,radius,0,1*Math.PI,true);
+      context.lineWidth = 4;
+      context.strokeStyle = "PaleGreen";
+      context.stroke();
+    
+     }
+       
+     var index
+     for (index = 1;index < 15;index++)
+     {
+        drawCircle(230+(index*10),250+(index*25),15+(15*index));
+     }
+   
+
+
+     
+</script>
+
+</body> 
+</html>
